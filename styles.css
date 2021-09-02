@@ -15,16 +15,65 @@
 .time-select,.sound-picker,.player-container{
   height: 80%;
   flex: 1;
-}
-
-.time-select {
-  background: lightblue;
-}
-
-.sound-picker {
-  background: lightgreen;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .player-container {
-  background: lightcoral;
+  position: relative;
+}
+
+.player-container svg{
+  position: absolute;
+  height: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.player-container img {
+  filter: invert(1);
+}
+
+.time-select {
+}
+
+.time-select button, .sound-picker button{
+  background: none;
+  padding: 5px;
+  border: 1px solid black;
+  color: black;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.sound-picker {
+}
+
+.sound-picker button{
+  border: none;
+  height: 100px;
+  width: 100px;
+}
+
+.sound-picker button:nth-child(1){
+  background: #4972a1;
+}
+
+.sound-picker button:nth-child(2){
+  background: #a14f49;
+
+}
+
+.time-display{
+  position: absolute;
+  bottom: 10%;
+  font-size: 50px;
+}
+
+.player-container {
 }
