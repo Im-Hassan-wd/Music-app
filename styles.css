@@ -48,7 +48,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .music .header {
@@ -61,4 +61,25 @@
   border: none;
   background: black;
   color: white;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.player {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.player img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.duration {
+  display: flex;
 }
