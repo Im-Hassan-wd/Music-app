@@ -72,9 +72,10 @@ const app = () => {
         outline.style.strokeDashoffset = progress;
 
         if (currentTime >= (duration) / 60){
-            sound.pause();
+            // sound.pause();
             sound.currentTime = 0;
             play.src = 'svg/play.svg';
+            sound.play();
         }
     }
 }
