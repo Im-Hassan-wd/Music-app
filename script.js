@@ -9,7 +9,10 @@ const app = () => {
     //get length of outline
     const outlineLength = outline.getTotalLength();
     //duration
-    let duration = 600;
+    let startPoint = 0;
+    let minDuration = Math.floor((sound.duration / 60));
+    let secDuration = Math.floor((minDuration / 60));
+    document.querySelector('.length').textContent = minDuration + ':' + secDuration;
 
     outline.style.strokeDasharray = outlineLength;
     outline.style.strokeDashoffset = outlineLength;
@@ -33,12 +36,13 @@ const app = () => {
     //animate the time
     sound.ontimeupdate = () => {
         let currentTime = sound.currentTime;
-        let elapsed = duration - currentTime;
+        let elapsed = startPoint + currentTime;
         let seconds =Math.floor(elapsed % 60);
-        let minute = Math.floor(elapsed / 60);
+        let minutes = Math.floor(elapsed / 60);
+        document.querySelector('.start').textContent = `${minutes}:${seconds}`;
 
         // animate the outline
-        let progress = outlineLength - (currentTime / duration) * outlineLength;
+        let progress = outlineLength - (currentTime);
         outline.style.strokeDashoffset = progress;
     }
 }
