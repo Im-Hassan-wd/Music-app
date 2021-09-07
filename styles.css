@@ -14,10 +14,6 @@
 .library {
   box-shadow: 0px 0px 10px rgb(102, 81, 81);
   padding: 20px;
-  /* height: 100vh; */
-  min-width: 184px;
-  /* position: absolute; */
-  /* left: -230px; */
   transition: 0.4s ease;
 }
 
@@ -36,6 +32,7 @@
   border: none;
   background: none;
   cursor: pointer;
+  text-align: left;
 }
 
 .library-song img {
@@ -109,9 +106,18 @@
   cursor: pointer;
 }
 
+.outline {
+  display: flex;
+  align-items: center;
+}
+
+.moving-outline {
+  position: absolute;
+}
+
 @media screen and (max-width: 734px) {
   .duration svg {
-    width: 100%;
+    /* width: 100%; */
   }
   .library {
     display: none;
