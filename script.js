@@ -10,9 +10,7 @@ const app = () => {
     const outlineLength = outline.getTotalLength();
     //duration
     let startPoint = 0;
-    let minDuration = Math.floor((sound.duration / 60));
-    let secDuration = Math.floor((minDuration / 60));
-    document.querySelector('.length').textContent = minDuration + ':' + secDuration;
+    console.log(sound.duration)
 
     outline.style.strokeDasharray = outlineLength;
     outline.style.strokeDashoffset = outlineLength;
