@@ -1,7 +1,7 @@
 const app = () => {
     const play = document.querySelector('.play');
     const sound = document.querySelector('.song');
-    const outline = document.querySelector('.moving-outline rect');
+    const outline = document.querySelector('.moving-outline line');
     const image = document.querySelector('.player img');
 
     //songs
