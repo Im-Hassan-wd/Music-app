@@ -6,11 +6,19 @@ const app = () => {
 
     //songs
     const songs = document.querySelectorAll('.library button');
+    // songs.forEach(song => {
+    //     song.addEventListener('click', () => {
+
+    //     })
+    // })
     //get length of outline
     const outlineLength = outline.getTotalLength();
     //duration
     let startPoint = 0;
-    console.log(sound.duration)
+    let duration = sound.duration * 60;
+    let minDur = Math.floor((duration / 60) / 60);
+    let secDur = Math.floor((duration / 60) % 60);
+    document.querySelector('.length').textContent = minDur + ':' + secDur;
 
     outline.style.strokeDasharray = outlineLength;
     outline.style.strokeDashoffset = outlineLength;
@@ -40,8 +48,15 @@ const app = () => {
         document.querySelector('.start').textContent = `${minutes}:${seconds}`;
 
         // animate the outline
-        let progress = outlineLength - (currentTime);
+        let progress = outlineLength - (currentTime / (duration/ 60)) * outlineLength;
+        // console.log(progress)
         outline.style.strokeDashoffset = progress;
+
+        if (currentTime >= duration){
+            sound.pause()
+            sound.currentTime = 0;
+            play.src = 'svg/play.svg';
+        }
     }
 }
 
