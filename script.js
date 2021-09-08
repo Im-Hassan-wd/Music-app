@@ -6,11 +6,13 @@ const app = () => {
 
     //songs
     const songs = document.querySelectorAll('.library button');
-    // songs.forEach(song => {
-    //     song.addEventListener('click', () => {
-
-    //     })
-    // })
+    songs.forEach(song => {
+        song.addEventListener('click', function() {
+            sound.src = this.getAttribute('data-song');
+            image.src = this.getAttribute('data-img');
+            checkPlaying(sound);
+        })
+    })
     //get length of outline
     const outlineLength = outline.getTotalLength();
     //duration
