@@ -40,14 +40,17 @@ const app = () => {
         if(sound.paused){
             sound.play();
             play.querySelector('img').src = 'svg/pause.svg';
+            image.classList.add('spin');
         } else {
             sound.pause();
             play.querySelector('img').src = 'svg/play.svg';
+            image.classList.remove('spin');
         }
     };
 
     //animate the time
     sound.ontimeupdate = () => {
+        // image.classList.add('spin');
         let startPoint = 0;
         let currentTime = sound.currentTime;
         let elapsed = startPoint + currentTime;
@@ -68,6 +71,7 @@ const app = () => {
             sound.pause()
             sound.currentTime = 0;
             play.src = 'svg/play.svg';
+            image.classList.remove('spin');
         }
     }
 }
