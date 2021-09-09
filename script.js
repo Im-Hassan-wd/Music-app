@@ -3,6 +3,8 @@ const app = () => {
     const sound = document.querySelector('.player .song');
     const outline = document.querySelector('.moving-outline line');
     const image = document.querySelector('.player img');
+    const title = document.querySelector('.title');
+    const artist = document.querySelector('.sub-title');
 
     // library
     const library = document.querySelector('.library');
@@ -19,8 +21,11 @@ const app = () => {
         song.addEventListener('click', function() {
             sound.src = this.getAttribute('data-song');
             image.src = this.getAttribute('data-img');
+            title.innerText = this.getAttribute('data-title');
+            artist.textContent = this.getAttribute('data-artist');
             checkPlaying(sound);
             library.classList.remove('show-library');
+            console.log(title)
         });
     });
     
