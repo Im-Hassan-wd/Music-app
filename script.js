@@ -67,7 +67,7 @@ const app = () => {
         if (currentTime >= (duration) / 60){
             sound.pause()
             sound.currentTime = 0;
-            play.querySelector('img').src = 'svg/play.svg';
+            play.src = 'svg/play.svg';
         }
     }
 }
