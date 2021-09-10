@@ -24,8 +24,6 @@ const app = () => {
             title.innerText = this.getAttribute('data-title');
             artist.textContent = this.getAttribute('data-artist');
             checkPlaying(sound);
-            library.classList.remove('show-library');
-            console.log(title)
         });
     });
     
@@ -45,23 +43,25 @@ const app = () => {
         if(sound.paused){
             sound.play();
             play.querySelector('img').src = 'svg/pause.svg';
-            image.classList.add('spin');
         } else {
             sound.pause();
             play.querySelector('img').src = 'svg/play.svg';
-            image.classList.remove('spin');
         }
     };
 
     //animate the time
     sound.ontimeupdate = () => {
-        // image.classList.add('spin');
+
         let startPoint = 0;
         let currentTime = sound.currentTime;
         let elapsed = startPoint + currentTime;
         let seconds = Math.floor(elapsed % 60);
         let minutes = Math.floor(elapsed / 60);
         document.querySelector('.start').textContent = `${minutes}:${seconds}`;
+        image.style.transform = 'rotate(' + currentTime * 10 + 'deg)';
+        image.style.transition = 'all 0.3s linear';
+
+
         // duration
         let duration = sound.duration * 60;
         let minDur = Math.floor((duration / 60) / 60);
@@ -69,14 +69,12 @@ const app = () => {
         document.querySelector('.length').textContent = minDur + ':' + secDur;
         // animate the outline
         let progress = outlineLength - (currentTime / (duration/ 60)) * outlineLength;
-        // console.log(progress)
         outline.style.strokeDashoffset = progress;
 
         if (currentTime >= (duration) / 60){
             sound.pause()
             sound.currentTime = 0;
             play.src = 'svg/play.svg';
-            image.classList.remove('spin');
         }
     }
 }
