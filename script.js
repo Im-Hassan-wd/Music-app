@@ -2,7 +2,7 @@ const app = () => {
     const play = document.querySelector('.play');
     const sound = document.querySelector('.player .song');
     const outline = document.querySelector('.moving-outline line');
-    const image = document.querySelector('.player img');
+    const spin = document.querySelector('.player img');
     const title = document.querySelector('.title');
     const artist = document.querySelector('.sub-title');
 
@@ -20,7 +20,7 @@ const app = () => {
     songs.forEach(song => {
         song.addEventListener('click', function() {
             sound.src = this.getAttribute('data-song');
-            image.src = this.getAttribute('data-img');
+            spin.src = this.getAttribute('data-img');
             title.innerText = this.getAttribute('data-title');
             artist.textContent = this.getAttribute('data-artist');
             checkPlaying(sound);
@@ -58,8 +58,8 @@ const app = () => {
         let seconds = Math.floor(elapsed % 60);
         let minutes = Math.floor(elapsed / 60);
         document.querySelector('.start').textContent = `${minutes}:${seconds}`;
-        image.style.transform = 'rotate(' + currentTime * 10 + 'deg)';
-        image.style.transition = 'all 0.3s linear';
+        spin.style.transform = 'rotate(' + currentTime * 10 + 'deg)';
+        spin.style.transition = 'all 0.2s linear';
 
 
         // duration
@@ -72,7 +72,7 @@ const app = () => {
         outline.style.strokeDashoffset = progress;
 
         if (currentTime >= (duration) / 60){
-            sound.pause()
+            sound.pause();
             sound.currentTime = 0;
             play.src = 'svg/play.svg';
         }
