@@ -11,7 +11,13 @@ const app = () => {
     const button = document.querySelector('.header button');
     const music = document.querySelector('.music');
 
-    
+    button.addEventListener('click', () => {
+        library.classList.toggle('show-library');
+    });
+
+    music.addEventListener('click', () => {
+        library.classList.remove('show-library');
+    });
 
     //songs
     const songs = document.querySelectorAll('.library button');
