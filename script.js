@@ -13,10 +13,13 @@ const app = () => {
 
     button.addEventListener('click', () => {
         library.classList.toggle('show-library');
+        console.log('active')
     });
 
-    music.addEventListener('click', () => {
-        library.classList.remove('show-library');
+    music.addEventListener('click', (e) => {
+        if (e.target.tagName != 'BUTTON') {
+            library.classList.remove('show-library');
+        }
     });
 
     //songs
