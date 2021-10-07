@@ -13,13 +13,16 @@
 }
 
 .library {
-  /* position: absolute; */
+  position: absolute;
+  /* display: none; */
   min-height: 100vh;
+  height: 100%;
   left: -300px;
   transition: 0.5s ease;
   z-index: 2;
   background: white;
   box-shadow: 1px 1px 4px #333;
+  /* background: #e32452; */
 }
 
 .show-library {
@@ -30,7 +33,6 @@
 
 .library h2 {
   padding: 10px;
-  height: 100%;
 }
 
 .library-song {
@@ -74,6 +76,11 @@
   position: fixed;
   width: 100%;
   height: 100%;
+  transition: all 0.5s ease;
+}
+
+.translate {
+  transform: translateX(100px);
 }
 
 .music .header {
@@ -157,6 +164,9 @@
 }
 
 @media screen and (max-width: 550px) {
+  .translate {
+    transform: translateX(0);
+  }
   .duration svg {
     width: 250px;
     height: 10px;
