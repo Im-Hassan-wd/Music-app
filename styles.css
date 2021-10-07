@@ -13,7 +13,7 @@
 }
 
 .library {
-  position: absolute;
+  /* position: absolute; */
   min-height: 100vh;
   left: -300px;
   transition: 0.5s ease;

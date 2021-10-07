@@ -13,7 +13,6 @@ const app = () => {
 
     button.addEventListener('click', () => {
         library.classList.toggle('show-library');
-        console.log('active')
     });
 
     music.addEventListener('click', (e) => {
@@ -56,7 +55,7 @@ const app = () => {
         }
     };
 
-    //animate the time
+    //animate the time and update the lenght and interver of each songs
     sound.ontimeupdate = () => {
 
         let startPoint = 0;
