@@ -171,7 +171,7 @@
   background: #e32452;
   border-radius: 1rem;
   cursor: pointer;
-  transform: rotateZ(180deg);
+  /* transform: rotateZ(180deg); */
 }
 
 input[type="range"]::-webkit-slider-thumb {

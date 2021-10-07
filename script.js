@@ -6,26 +6,45 @@ const app = () => {
     const title = document.querySelector('.title');
     const artist = document.querySelector('.sub-title');
     const mute = document.querySelector('.mute');
-    const right = document.querySelector('.right');
     const start = document.querySelector('.start');
-    console.log(slider)
+    // get length of slider
+    let sliderLength = slider.max;
+    slider.value = sliderLength;
+    let currentTime = 0;
+
 
     // library
     const library = document.querySelector('.library');
     const button = document.querySelector('.header button');
     const music = document.querySelector('.music');
 
-    button.addEventListener('click', () => {
-        library.classList.toggle('show-library');
-        music.classList.toggle('translate');
-    });
+    // event listerners
+    button.addEventListener('click', showLibrary);
+    music.addEventListener('click', (e) => closeLibrary(e));
+    // slider.addEventListener("change", (e) => fastForward(e));
+    //play song
+    play.addEventListener('click', () => checkPlaying(sound));
+    // mute song
+    mute.addEventListener("click", () => muteSong(sound));
 
-    music.addEventListener('click', (e) => {
+    //functions 
+    function closeLibrary(e) {
         if (e.target.tagName != 'BUTTON' && e.target.tagName !='IMG' && e.target.tagName !='svg') {
             library.classList.remove('show-library');
             music.classList.remove('translate');
         }
-    });
+    }
+    function showLibrary(){
+        library.classList.toggle('show-library');
+        music.classList.toggle('translate');
+    }
+
+    function fastForward(e){
+        slider.value = e.target.value;
+        console.log(slider.value);
+        console.log(e.target.value);
+    }
+
 
     //songs
     const songs = document.querySelectorAll('.library button');
@@ -40,20 +59,6 @@ const app = () => {
         });
     });
 
-    // get length of slider
-    const sliderLength = slider.max;
-    slider.value = sliderLength;
-
-    //play song
-    play.addEventListener('click', () => {
-        checkPlaying(sound);
-    });
-
-    // mute song
-    mute.addEventListener("click", () => {
-        muteSong(sound);
-    });
-
     //mute and un mute song 
     const muteSong = sound => {
         if(sound.muted === false) {
@@ -63,10 +68,6 @@ const app = () => {
             sound.muted = false;
             mute.querySelector('img').src = 'svg/mute.svg';
         }
-    }
-
-    const fastForward = sound => {
-        sound.currentTime * 2;
     }
     
 
@@ -83,11 +84,13 @@ const app = () => {
 
 
     //animate the time and update the lenght and interver of each songs
-    sound.ontimeupdate = () => {
+    sound.ontimeupdate = (e) => {
+
+        // fastForward(e);
 
         //setting songs time
         let startPoint = 0;
-        let currentTime = sound.currentTime;
+        currentTime = sound.currentTime
         let elapsed = startPoint + currentTime;
         let seconds = Math.floor(elapsed % 60);
         let minutes = Math.floor(elapsed / 60);
@@ -109,7 +112,6 @@ const app = () => {
         // animate the outline
         let progress = sliderLength - (currentTime / (duration/ 60)) * sliderLength;
         slider.value = progress;
-        // progress ++;
 
         if (currentTime >= (duration) / 60){
             // sound.pause();
@@ -119,5 +121,7 @@ const app = () => {
         }
     }
 }
+
+
 
 app();
