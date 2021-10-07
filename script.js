@@ -17,7 +17,7 @@ const app = () => {
     });
 
     music.addEventListener('click', (e) => {
-        if (e.target.tagName != 'BUTTON') {
+        if (e.target.tagName != 'BUTTON' && e.target.tagName !='IMG' && e.target.tagName !='svg') {
             library.classList.remove('show-library');
             music.classList.remove('translate');
         }
