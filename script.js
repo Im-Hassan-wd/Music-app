@@ -6,7 +6,7 @@ const app = () => {
     const title = document.querySelector('.title');
     const artist = document.querySelector('.sub-title');
     const mute = document.querySelector('.mute');
-    console.log(sound)
+    const right = document.querySelector('.right');
 
     // library
     const library = document.querySelector('.library');
@@ -48,10 +48,15 @@ const app = () => {
         checkPlaying(sound);
     });
 
-    // x2 song
+    // mute song
     mute.addEventListener("click", () => {
-        muteSong(sound)
-    })
+        muteSong(sound);
+    });
+
+    // x2 song
+    right.addEventListener("click", () => {
+        fastForward(sound);
+    });
 
     //mute and un mute song 
     const muteSong = sound => {
@@ -62,6 +67,10 @@ const app = () => {
             sound.muted = false;
             mute.querySelector('img').src = 'svg/mute.svg';
         }
+    }
+
+    const fastForward = sound => {
+        sound.currentTime * 2;
     }
     
 
