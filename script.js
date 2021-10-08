@@ -1,10 +1,12 @@
 const app = () => {
     const play = document.querySelector('.play');
-    const sound = document.querySelector('.player .song');
+    const sound = document.querySelector('audio');
     const outline = document.querySelector('.moving-outline line');
     const spin = document.querySelector('.player img');
     const title = document.querySelector('.title');
     const artist = document.querySelector('.sub-title');
+    const mute = document.querySelector('.mute');
+    console.log(sound)
 
     // library
     const library = document.querySelector('.library');
@@ -46,6 +48,23 @@ const app = () => {
         checkPlaying(sound);
     });
 
+    // x2 song
+    mute.addEventListener("click", () => {
+        muteSong(sound)
+    })
+
+    //mute and un mute song 
+    const muteSong = sound => {
+        if(sound.muted === false) {
+            sound.muted = true;
+            mute.querySelector('img').src = 'svg/unmute.svg';
+        } else {
+            sound.muted = false;
+            mute.querySelector('img').src = 'svg/mute.svg';
+        }
+    }
+    
+
     //stop and play song
     const checkPlaying = sound => {
         if(sound.paused){
@@ -56,6 +75,7 @@ const app = () => {
             play.querySelector('img').src = 'svg/play.svg';
         }
     };
+
 
     //animate the time and update the lenght and interver of each songs
     sound.ontimeupdate = () => {
@@ -75,6 +95,8 @@ const app = () => {
         let minDur = Math.floor((duration / 60) / 60);
         let secDur = Math.floor((duration / 60) % 60);
         document.querySelector('.length').textContent = minDur + ':' + secDur;
+
+
         // animate the outline
         let progress = outlineLength - (currentTime / (duration/ 60)) * outlineLength;
         outline.style.strokeDashoffset = progress;
