@@ -5,6 +5,19 @@
   font-family: "Nunito", sans-serif;
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f08fa5;
+}
+::-webkit-scrollbar-thumb {
+  background: #e32452;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e32452;
+}
+
 /* background: #DA365E; */
 .app {
   display: flex;
