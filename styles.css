@@ -59,8 +59,9 @@
   outline-color: #e32452;
 }
 
-.library-song.active {
-  background: #a3a29d;
+.library-song:active,
+.library-song:hover {
+  background: #bebebb;
 }
 
 .library-song img {
@@ -146,6 +147,7 @@
 
 .duration {
   display: flex;
+  align-items: center;
   padding: 30px 0;
 }
 
@@ -159,19 +161,23 @@
   width: 60%;
 }
 
+.control-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0px 0;
+  width: 300px;
+  height: 5px;
+  position: relative;
+  background: #e32452;
+  border-radius: 1rem;
+  cursor: pointer;
+  transform: rotateZ(180deg);
+}
+
 .controller button {
   border: none;
   background: none;
   cursor: pointer;
-}
-
-.outline {
-  display: flex;
-  align-items: center;
-}
-
-.moving-outline {
-  position: absolute;
 }
 
 @media screen and (max-width: 550px) {

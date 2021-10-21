@@ -1,12 +1,13 @@
 const app = () => {
     const play = document.querySelector('.play');
     const sound = document.querySelector('audio');
-    const outline = document.querySelector('.moving-outline line');
+    const slider = document.querySelector('.control-slider');
     const spin = document.querySelector('.player img');
     const title = document.querySelector('.title');
     const artist = document.querySelector('.sub-title');
     const mute = document.querySelector('.mute');
     const right = document.querySelector('.right');
+    const start = document.querySelector('.start');
 
     // library
     const library = document.querySelector('.library');
@@ -34,14 +35,18 @@ const app = () => {
             title.innerText = this.getAttribute('data-title');
             artist.textContent = this.getAttribute('data-artist');
             checkPlaying(sound);
+            sound.muted = false;
         });
     });
     
-    //get length of outline
-    const outlineLength = outline.getTotalLength();
+    // get length of outline
+    // const outlineLength = slider.getTotalLength();
+    // console.log(outlineLength);
+    // get length of slider
+    const sliderLength = slider.max;
 
-    outline.style.strokeDasharray = outlineLength;
-    outline.style.strokeDashoffset = outlineLength;
+    // outline.style.strokeDasharray = outlineLength;
+    // outline.style.strokeDashoffset = outlineLength;
 
     //play song
     play.addEventListener('click', () => {
@@ -89,12 +94,15 @@ const app = () => {
     //animate the time and update the lenght and interver of each songs
     sound.ontimeupdate = () => {
 
+        //setting songs time
         let startPoint = 0;
         let currentTime = sound.currentTime;
         let elapsed = startPoint + currentTime;
         let seconds = Math.floor(elapsed % 60);
         let minutes = Math.floor(elapsed / 60);
-        document.querySelector('.start').textContent = `${minutes}:${seconds}`;
+
+        //outputing the current time
+        start.textContent = `${minutes}:${seconds}`;
         spin.style.transform = 'rotate(' + currentTime * 10 + 'deg)';
         spin.style.transition = 'all 0.2s linear';
 
@@ -103,12 +111,14 @@ const app = () => {
         let duration = sound.duration * 60;
         let minDur = Math.floor((duration / 60) / 60);
         let secDur = Math.floor((duration / 60) % 60);
+        //outputing the current song length
         document.querySelector('.length').textContent = minDur + ':' + secDur;
 
 
         // animate the outline
-        let progress = outlineLength - (currentTime / (duration/ 60)) * outlineLength;
-        outline.style.strokeDashoffset = progress;
+        let progress = sliderLength - (currentTime / (duration/ 60)) * sliderLength;
+        slider.value = progress;
+        // console.log(progress)
 
         if (currentTime >= (duration) / 60){
             // sound.pause();
