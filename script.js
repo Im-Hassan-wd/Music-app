@@ -8,6 +8,7 @@ const app = () => {
     const mute = document.querySelector('.mute');
     const right = document.querySelector('.right');
     const start = document.querySelector('.start');
+    console.log(slider)
 
     // library
     const library = document.querySelector('.library');
@@ -38,15 +39,10 @@ const app = () => {
             sound.muted = false;
         });
     });
-    
-    // get length of outline
-    // const outlineLength = slider.getTotalLength();
-    // console.log(outlineLength);
+
     // get length of slider
     const sliderLength = slider.max;
-
-    // outline.style.strokeDasharray = outlineLength;
-    // outline.style.strokeDashoffset = outlineLength;
+    slider.value = sliderLength;
 
     //play song
     play.addEventListener('click', () => {
@@ -56,11 +52,6 @@ const app = () => {
     // mute song
     mute.addEventListener("click", () => {
         muteSong(sound);
-    });
-
-    // x2 song
-    right.addEventListener("click", () => {
-        fastForward(sound);
     });
 
     //mute and un mute song 
@@ -118,7 +109,7 @@ const app = () => {
         // animate the outline
         let progress = sliderLength - (currentTime / (duration/ 60)) * sliderLength;
         slider.value = progress;
-        // console.log(progress)
+        // progress ++;
 
         if (currentTime >= (duration) / 60){
             // sound.pause();

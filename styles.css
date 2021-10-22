@@ -174,12 +174,6 @@
   transform: rotateZ(180deg);
 }
 
-.controller button {
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   background: #fff;
@@ -187,6 +181,12 @@ input[type="range"]::-webkit-slider-thumb {
   height: 15px;
   width: 15px;
   border-radius: 50%;
+}
+
+.controller button {
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 550px) {
