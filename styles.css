@@ -120,6 +120,7 @@ body {
 
 .header button:hover {
   background: #333;
+  color: #fff;
 }
 
 .player {

@@ -12,7 +12,6 @@ const app = () => {
     slider.value = sliderLength;
     let currentTime = 0;
 
-
     // library
     const library = document.querySelector('.library');
     const button = document.querySelector('.header button');
