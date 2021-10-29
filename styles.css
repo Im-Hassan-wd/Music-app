@@ -9,13 +9,17 @@
   width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #f08fa5;
+  background: #fff;
 }
 ::-webkit-scrollbar-thumb {
-  background: #e32452;
+  background: #b9b9b9;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #e32452;
+  background: #b9b9b9;
+}
+
+body {
+  background: #4f393c;
 }
 
 /* background: #DA365E; */
@@ -23,6 +27,7 @@
   display: flex;
   height: 100vh;
   width: 100%;
+  color: #fff;
 }
 
 .library {
@@ -44,6 +49,7 @@
 
 .library h2 {
   padding: 10px;
+  color: #4f393c;
 }
 
 .library-song {
@@ -56,12 +62,12 @@
   text-align: left;
   padding: 10px 5px;
   width: 100%;
-  outline-color: #e32452;
+  outline-color: #4f393c;
 }
 
 .library-song:active,
 .library-song:hover {
-  background: #bebebb;
+  background: #4f393c;
 }
 
 .library-song img {
@@ -155,20 +161,14 @@
   padding: 0 10px;
 }
 
-.controller {
-  display: flex;
-  justify-content: space-around;
-  width: 60%;
-}
-
 .control-slider {
   -webkit-appearance: none;
   appearance: none;
   margin: 0px 0;
   width: 300px;
-  height: 5px;
+  height: 3px;
   position: relative;
-  background: #e32452;
+  background: #fff;
   border-radius: 1rem;
   cursor: pointer;
   transform: rotateZ(180deg);
@@ -178,15 +178,32 @@ input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   background: #fff;
   border: 1px solid rgb(192, 192, 192);
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
 }
 
-.controller button {
+.controller,
+.option {
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+}
+
+.controller {
+  width: 40%;
+}
+
+.controller button,
+.option button {
   border: none;
   background: none;
   cursor: pointer;
+}
+
+.controller img,
+.option img {
+  filter: invert(1);
 }
 
 @media screen and (max-width: 550px) {
@@ -203,8 +220,13 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 @media screen and (max-width: 400px) {
-  .controller {
+  .controller,
+  .option {
     width: 80%;
+  }
+
+  .control-slider {
+    width: 280px;
   }
 
   .player img {
