@@ -5,59 +5,31 @@ const app = () => {
     const thumbnail = document.querySelector('.player img');
     const title = document.querySelector('.title');
     const artist = document.querySelector('.sub-title');
+
+    // controller buttons
     const mute = document.querySelector('.mute');
     const start = document.querySelector('.start');
-    const next = document.querySelector(".next");
     const songs = document.querySelectorAll('.library button');
+    const next = document.querySelector(".next");
+    const prev = document.querySelector(".prev");
+    const repeat = document.querySelector(".repeat");
 
     // next songs generate
         //music
     let musics = [
-        "hollow.mp3",
-        "Keep Going.mp3",
-        "Rainy-Nights.mp3",
-        "in-and-out.mp3",
-        "nothing-really-matters.mp3",
-        "pay-up.mp3",
-        "sanctuary.mp3",
-        "lazarus.mp3",
-        "disconnect.mp3"
+        "hollow.mp3", "Keep Going.mp3", "Rainy-Nights.mp3", "in-and-out.mp3", "nothing-really-matters.mp3", "pay-up.mp3", "sanctuary.mp3", "lazarus.mp3", "disconnect.mp3"
     ];
         //images
     let thumbnails = [
-        "hollow.jpeg",
-        "keep-going.jpg",
-        "rainy-night.jpeg",
-        "in-and-out.jpg",
-        "nothing.jpeg",
-        "pay-up.jpeg",
-        "sanctuary.jpeg",
-        "disconnect.jpeg",
-        "himalaya.jpeg"
+        "hollow.jpeg", "keep-going.jpg", "rainy-night.jpeg", "in-and-out.jpg", "nothing.jpeg", "pay-up.jpeg", "sanctuary.jpeg", "disconnect.jpeg", "himalaya.jpeg"
     ];
         //titles
     let titles = [
-        "Hollow",
-        "Keep Going",
-        "Rainy Night",
-        "In And Out Of Love",
-        "Nothing really matters",
-        "Pay up",
-        "Sanctuary",
-        "In A Cabin By The Lake",
-        "Disconnect"
+        "Hollow", "Keep Going", "Rainy Night", "In And Out Of Love", "Nothing really matters", "Pay up", "Sanctuary", "In A Cabin By The Lake", "Disconnect"
     ]
         //artist
     let artists = [
-        "Ecepta",
-        "Sworn",
-        "Azaleh",
-        "The Eastern Plain",
-        "Astroblk",
-        "Astroblk",
-        "Aviscerall",
-        "Lazarus Moment",
-        "Victoriya"
+        "Ecepta", "Sworn", "Azaleh", "The Eastern Plain", "Astroblk", "Astroblk", "Aviscerall", "Lazarus Moment", "Victoriya"
     ]
 
     // get length of slider
@@ -80,6 +52,12 @@ const app = () => {
     mute.addEventListener("click", () => muteSong(sound));
     //next song 
     next.addEventListener("click", () => playNext());
+    //prev song
+    prev.addEventListener("click", () => playNext());
+    // repeat song
+    repeat.addEventListener("click", () => {
+        repeat.classList.toggle("active");
+    });
 
     //functions 
     function closeLibrary(e) {
@@ -182,10 +160,16 @@ const app = () => {
         slider.value = progress;
 
         if (currentTime >= (duration) / 60){
-            // sound.pause();
-            sound.currentTime = 0;
-            play.src = 'svg/play.svg';
-            sound.play();
+            playNext();
+        }
+
+        if(repeat.classList.contains("active")) {
+            if (currentTime >= (duration) / 60){
+                sound.currentTime = 0;
+                play.src = 'svg/play.svg';
+                sound.play();
+                console.log("contains active");
+            }
         }
     }
 }

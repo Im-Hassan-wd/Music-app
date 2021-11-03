@@ -207,6 +207,14 @@ input[type="range"]::-webkit-slider-thumb {
   filter: invert(1);
 }
 
+button.repeat {
+  opacity: 0.5;
+}
+
+button.repeat.active {
+  opacity: 1;
+}
+
 @media screen and (max-width: 550px) {
   .translate {
     transform: translateX(0);
