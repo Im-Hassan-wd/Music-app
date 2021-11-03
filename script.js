@@ -160,16 +160,15 @@ const app = () => {
         slider.value = progress;
 
         if (currentTime >= (duration) / 60){
-            playNext();
+                playNext();
         }
 
-        if(repeat.classList.contains("active")) {
+        if(!repeat.classList.contains("active")) {
             if (currentTime >= (duration) / 60){
                 sound.currentTime = 0;
                 play.src = 'svg/play.svg';
                 sound.play();
-                console.log("contains active");
-            }
+            } 
         }
     }
 }
