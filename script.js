@@ -94,6 +94,7 @@ const app = () => {
             artist.textContent = this.getAttribute('data-artist');
             checkPlaying(sound);
             sound.muted = false;
+            mute.querySelector('img').src = 'svg/mute.svg';
         });
     });
 
