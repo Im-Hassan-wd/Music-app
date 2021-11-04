@@ -175,7 +175,7 @@ body {
   transform: rotateZ(180deg);
 }
 
-input[type="range"]::-webkit-slider-thumb {
+.control-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   background: #fff;
   border: 1px solid rgb(192, 192, 192);
@@ -205,6 +205,35 @@ input[type="range"]::-webkit-slider-thumb {
 .controller img,
 .option img {
   filter: invert(1);
+}
+
+.volume-adjustment {
+  display: flex;
+  align-items: center;
+}
+
+.volume-adjustment p {
+  color: #fff;
+}
+
+.volume-adjustment div {
+  padding: 5px;
+  margin: 0 10px;
+  display: none;
+  background: #2e161c;
+}
+
+.volume-adjustment div.active {
+  display: block;
+}
+
+.volume-slider {
+  width: 50px;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  height: 10px;
+  width: 10px;
 }
 
 button.repeat {

@@ -13,6 +13,8 @@ const app = () => {
     const next = document.querySelector(".next");
     const prev = document.querySelector(".prev");
     const repeat = document.querySelector(".repeat");
+    const volumeAdjustment = document.querySelector(".volume-adjustment");
+    console.log(volumeAdjustment)
 
     // next songs generate
         //music
@@ -50,6 +52,11 @@ const app = () => {
     play.addEventListener('click', () => checkPlaying(sound));
     // mute song
     mute.addEventListener("click", () => muteSong(sound));
+    // volumeAdjustment.addEventListener("contextmenu", (e) => {
+    //     e.preventDefault();
+    //     volumeAdjustment.children[1].classList.add("active");
+
+    // });
     //next song 
     next.addEventListener("click", () => playNext());
     //prev song
@@ -160,15 +167,13 @@ const app = () => {
         slider.value = progress;
 
         if (currentTime >= (duration) / 60){
-                playNext();
-        }
-
-        if(!repeat.classList.contains("active")) {
-            if (currentTime >= (duration) / 60){
+            if(repeat.classList.contains("active")) {
                 sound.currentTime = 0;
                 play.src = 'svg/play.svg';
                 sound.play();
-            } 
+            } else {
+                playNext();
+            }
         }
     }
 }
