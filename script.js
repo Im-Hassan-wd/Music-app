@@ -73,13 +73,6 @@ const app = () => {
         musicPage.classList.toggle('translate');
     }
 
-    function fastForward(e){
-        slider.value = e.target.value;
-        console.log(slider.value);
-        console.log(e.target.value);
-    }
-
-
     //songs
     songs.forEach((song,e) => {
         song.addEventListener('click', function() {
@@ -134,9 +127,6 @@ const app = () => {
 
     //animate the time and update the lenght and interver of each songs
     sound.ontimeupdate = (e) => {
-
-        // fastForward(e);
-
         //setting songs time
         let startPoint = 0;
         currentTime = sound.currentTime
@@ -156,7 +146,6 @@ const app = () => {
         let secDur = Math.floor((duration / 60) % 60);
         //outputing the current song length
         document.querySelector('.length').textContent = minDur + ':' + secDur;
-
 
         // animate the outline
         let progress = sliderLength - (currentTime / (duration/ 60)) * sliderLength;
