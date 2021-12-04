@@ -14,7 +14,7 @@ const app = () => {
     const prev = document.querySelector(".prev");
     const repeat = document.querySelector(".repeat");
     const volumeAdjustment = document.querySelector(".volume-adjustment");
-    console.log(volumeAdjustment)
+    let body = document.body.style;
 
     // next songs generate
         //music
