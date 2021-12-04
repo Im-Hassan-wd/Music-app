@@ -13,8 +13,6 @@ const app = () => {
     const next = document.querySelector(".next");
     const prev = document.querySelector(".prev");
     const repeat = document.querySelector(".repeat");
-    const volumeAdjustment = document.querySelector(".volume-adjustment");
-    let body = document.body.style;
 
     // next songs generate
         //music
