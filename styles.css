@@ -179,9 +179,7 @@ body {
 
 .control-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  background: #fff;
   background: #4f393c;
-  border: 1px solid rgb(192, 192, 192);
   border: 1px solid #4f393c;
   height: 20px;
   width: 20px;
@@ -204,11 +202,6 @@ body {
   border: none;
   background: none;
   cursor: pointer;
-}
-
-.controller img,
-.option img {
-  filter: invert(1);
 }
 
 .volume-adjustment {
