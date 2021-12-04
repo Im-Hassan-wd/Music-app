@@ -52,15 +52,10 @@ const app = () => {
     play.addEventListener('click', () => checkPlaying(sound));
     // mute song
     mute.addEventListener("click", () => muteSong(sound));
-    // volumeAdjustment.addEventListener("contextmenu", (e) => {
-    //     e.preventDefault();
-    //     volumeAdjustment.children[1].classList.add("active");
-
-    // });
     //next song 
-    next.addEventListener("click", () => playNext());
+    next.addEventListener("click", () => playAnotherSong());
     //prev song
-    prev.addEventListener("click", () => playNext());
+    prev.addEventListener("click", () => playAnotherSong());
     // repeat song
     repeat.addEventListener("click", () => {
         repeat.classList.toggle("active");
@@ -122,7 +117,7 @@ const app = () => {
         }
     };
 
-    const playNext = () => {
+    const playAnotherSong = () => {
         // index
         let index = Math.floor(Math.random() * musics.length);
         const nextSong = musics[index];
@@ -173,7 +168,7 @@ const app = () => {
                 play.src = 'svg/play.svg';
                 sound.play();
             } else {
-                playNext();
+                playAnotherSong();
             }
         }
     }
